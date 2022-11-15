@@ -13,7 +13,7 @@ int main() {
     char *PORT_NUM = "80"; // HTTP port
 
     char request[0xfffff], response[0xfffff]; // 請求 與 回應訊息
-    char *requestLine = "GET / HTTP/1.1\r\n"; // 請求行
+    char *requestLine = "GET /index.php HTTP/1.1\r\n"; // 請求行
     char *headerFmt = "Host: %s\r\n"; // Host 表頭欄位
     char *CRLF = "\r\n";  // 表頭後的 CRLF
 
@@ -69,7 +69,7 @@ int main() {
     if (send(cfd, request, strlen(request), 0) < 0)
         errExit("Send");
     // 接收回應
-    if (recv(cfd, response, 0xfff, 0) < 0)
+    if (recv(cfd, response, sizeof(response), MSG_WAITALL) < 0)
         errExit("Receive");
     // 格式化輸出回應訊息
     printf("----------\nResponse:\n----------\n%s\n", response);

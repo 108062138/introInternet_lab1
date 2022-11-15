@@ -1,11 +1,11 @@
-the request: GET / HTTP/1.1
+the request: GET /index.php HTTP/1.1
 Host: can.cs.nthu.edu.tw
 
 
 ----------
 Request:
 ----------
-GET / HTTP/1.1
+GET /index.php HTTP/1.1
 Host: can.cs.nthu.edu.tw
 
 
@@ -13,7 +13,7 @@ Host: can.cs.nthu.edu.tw
 Response:
 ----------
 HTTP/1.1 200 OK
-Date: Tue, 15 Nov 2022 16:07:15 GMT
+Date: Tue, 15 Nov 2022 17:25:03 GMT
 Server: Apache/2.4.41 (Ubuntu)
 Vary: Accept-Encoding
 Content-Length: 4380
@@ -52,4 +52,80 @@ Content-Type: text/html; charset=UTF-8
                 <!-- end of logo area-->
 		<div id="menu">
     <div class="menubg">
-	<div class="buttontext"><a href="index.php">Home</a>
+	<div class="buttontext"><a href="index.php">Home</a></div>
+    </div>
+    <div class="menubg">
+	<div class="buttontext"><a href="members.php">Members</a></div>
+    </div>
+    <div class="menubg">
+	<div class="buttontext"><a target='_blank' href="http://www.cs.nthu.edu.tw/~jungchuk/home.html">Advisor</a></div>
+    </div>
+    <div class="menubg">
+	<div class="buttontext"><a href="LAB/">Lab Zone</a></div>
+    </div>
+    <div class="menubg">
+	<div class="buttontext"><a href="gallery.php">Gallery</a></div>
+    </div>
+    <div class="menubg">
+	<div class="buttontext"><a href="contact.php">Contact Us</a></div>
+    </div>
+</div>
+            </div>
+            <!-- end of header -->
+            <div id="page_content">
+                <div id="main_content">
+
+                    <div class="paragraph">
+    <h2>Welcome to CAN LAB </h2>
+    <div class="text">
+        <p> 我們實驗室全名為「通訊與網路實驗室」，英文全名為 Communications and Networking Laboratory，簡稱 「CAN實驗室」，成立於2008年，目前有碩士生七人，指導教授是高榮駿教授。
+            <p>我們的研究方向為分析、設計並且優化多種無線網路技術，並將所研發的技術拓展到其他的應用面。 </p>
+            <p>我們的研究方向涵蓋下列議題:</p>
+            <ul type="disc">
+                <li>Wireless networks (e.g., 5G/6G mobile networks, 802.11ax, etc)</li>
+		<li>AI-enabled technologies and applications</li>
+		<li>SDN, NFV, and network security</li>
+                <li>Cooperative communication</li>
+                <li>Network coding</li>
+		<li>Performance modeling</li>
+                <li>Wireless ad-hoc networks and wireless sensor networks</li>
+                <li>Wireless vehicular networks</li>
+		<li>Multicast algorithms and routing protocols</li>
+                <li>Mobile computing</li>
+                <li>Android programming </li>
+            </ul>
+    </div>
+</div>
+<div class="paragraph">
+    <div class="text"></div>
+</div>
+
+                </div>
+                <!-- end of content -->
+                <div id="rightbar">
+                    <h2>Latest News</h2>
+                    <ul>
+                        <li><a href="http://web.cs.nthu.edu.tw/files/14-1015-143485,r109-1.php?Lang=zh-tw" target="_blank">MC2018優秀論文獎(Aug. 2018)</a></li>
+                    </ul>
+                    <h2>Related Sources</h2>
+                    <ul>
+                        <li><a href="http://www.nthu.edu.tw">NTHU</a></li>
+                        <li><a href="http://web.cs.nthu.edu.tw/bin/home.php">NTHU CS </a></li>
+                        <li><a href="http://www.com.nthu.edu.tw/">NTHU COM </a></li>
+                    </ul>
+                </div>
+                <!-- end of sidebar -->
+                <div class="cleaner"></div>
+            </div>
+            <!-- end of page -->
+        </div>
+    </div>
+    <div id="footerimage">
+        <div id="footer">
+        <p>Copyright CaN LAB; 2022 NTHU CAN LAB. DESIGN BY HIGH IMPACT <a href="http://www.highimpact-seo.co.uk/">SEO SERVICES</a>. </p>
+        </div>
+    </div>
+    <!-- end of footer -->
+</body>
+</html>
+
