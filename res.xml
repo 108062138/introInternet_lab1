@@ -1,0 +1,55 @@
+the request: GET / HTTP/1.1
+Host: can.cs.nthu.edu.tw
+
+
+----------
+Request:
+----------
+GET / HTTP/1.1
+Host: can.cs.nthu.edu.tw
+
+
+----------
+Response:
+----------
+HTTP/1.1 200 OK
+Date: Tue, 15 Nov 2022 16:07:15 GMT
+Server: Apache/2.4.41 (Ubuntu)
+Vary: Accept-Encoding
+Content-Length: 4380
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!--<meta HTTP-EQUIV="REFRESH" content="0; url=http://wasn2013.cs.nthu.edu.tw/WASN2013_website/WASN2013/index.php">-->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <title>NTHU CAN LAB</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="style2.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <style type="text/css">
+        <!-- .style7 {
+            color: #808080
+        }
+
+        -->
+    </style>
+</head>
+
+<body>
+    <div id="middleimage">
+        <div id="topimage">
+            <div id="header">
+                <div id="logo">
+                    <h1><img src="images/CANO.bmp">CAN LAB</h1>
+                    <p> Communications and Networking Lab </p>
+                    <p>
+                </div>
+                <!-- end of logo area-->
+		<div id="menu">
+    <div class="menubg">
+	<div class="buttontext"><a href="index.php">Home</a>
