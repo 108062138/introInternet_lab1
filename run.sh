@@ -1,2 +1,2 @@
 make
-./TCP_client.o > res.xml
+./TCP_client.o can.cs.nthu.edu.tw/index.php > res.xml

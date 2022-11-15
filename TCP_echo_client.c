@@ -11,7 +11,11 @@
 
 void errExit(char *reason);
 
-int main() {
+int main(int argc, char* argv[]) {
+    char* url = argv[1],*hostName,*left;
+    const char* splitBy = "/";
+    hostName = strtok(url, splitBy);
+    left = strtok(NULL, splitBy);
 
     char *host = "can.cs.nthu.edu.tw"; // 目標 URI
     char *PORT_NUM = "80"; // HTTP port
@@ -28,15 +32,16 @@ int main() {
 
     // 動態配置記憶體，以決定 表頭緩衝區 (Header Buffer) 長度
     size_t bufferLen = strlen(headerFmt) + strlen(host) + 1;
-    char *buffer = (char *) malloc(bufferLen); // 表頭緩衝區
+    char *buffer = (char *) malloc(bufferLen);
+    size_t rl = strlen(requestLine) + 1;
+    char *tmpb = (char *) malloc(rl);
+    snprintf(tmpb, rl, requestLine, left);
 
     //組裝請求訊息
     strcpy(request, requestLine);
     snprintf(buffer, bufferLen, headerFmt, host);
     strcat(request, buffer);
     strcat(request, CRLF);
-
-    //printf("the request: %s\n", request);
 
     // 釋放緩衝區記憶體
     free(buffer);
@@ -76,7 +81,7 @@ int main() {
     if (recv(cfd, response, sizeof(response), MSG_WAITALL) < 0)
         errExit("Receive");
     // 格式化輸出回應訊息
-    printf("----------\nResponse:\n----------\n%s\n", response);
+    //printf("----------\nResponse:\n----------\n%s\n", response);
 
     // 半雙工關閉 TCP Socket 連線
     // (i.e., 關閉寫入)
@@ -86,6 +91,7 @@ int main() {
     int targetLen = 9;
     int cnt = 0;
     int state = REDUNDENT;
+    printf("======== Hyperlinks ========\n");
     for(int i=0;i<strlen(response);i++){
         if(state == REDUNDENT){
             if(response[i] == target[cnt]){
@@ -122,3 +128,13 @@ void errExit(char *reason) {
     printf("Error: %s", buff);
     exit(EXIT_FAILURE);
 }
+
+/*
+Request:
+----------
+GET /index.php HTTP/1.1
+Host: can.cs.nthu.edu.tw
+
+
+----------
+*/
