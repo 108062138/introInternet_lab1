@@ -5,6 +5,10 @@
 #include <string.h>
 #include <sys/errno.h>
 
+#define REDUNDENT 0 
+#define MAYOK     1
+#define HIT       2
+
 void errExit(char *reason);
 
 int main() {
@@ -32,7 +36,7 @@ int main() {
     strcat(request, buffer);
     strcat(request, CRLF);
 
-    printf("the request: %s\n", request);
+    //printf("the request: %s\n", request);
 
     // 釋放緩衝區記憶體
     free(buffer);
@@ -74,11 +78,42 @@ int main() {
     // 格式化輸出回應訊息
     printf("----------\nResponse:\n----------\n%s\n", response);
 
-
     // 半雙工關閉 TCP Socket 連線
     // (i.e., 關閉寫入)
     shutdown(cfd, SHUT_WR);
 
+    char* target = "<a href=\"";
+    int targetLen = 9;
+    int cnt = 0;
+    int state = REDUNDENT;
+    for(int i=0;i<strlen(response);i++){
+        if(state == REDUNDENT){
+            if(response[i] == target[cnt]){
+                state = MAYOK;
+                cnt++;
+            }
+        }else if(state == MAYOK){
+            if(response[i] == target[cnt]){
+                if(cnt == targetLen-1){
+                    state = HIT;
+                    cnt = 0;
+                }else{
+                    cnt++;
+                }
+            }else{
+                state = REDUNDENT;
+                cnt = 0;
+            }
+        }else{
+            if(response[i]!='\"'){
+                printf("%c", response[i]);
+            }else {
+                printf("\n");
+                state = REDUNDENT;
+                cnt=0;
+            }
+        }
+    }
     return 0;
 }
 

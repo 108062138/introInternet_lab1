@@ -1,7 +1,3 @@
-the request: GET /index.php HTTP/1.1
-Host: can.cs.nthu.edu.tw
-
-
 ----------
 Request:
 ----------
@@ -13,7 +9,7 @@ Host: can.cs.nthu.edu.tw
 Response:
 ----------
 HTTP/1.1 200 OK
-Date: Tue, 15 Nov 2022 17:25:03 GMT
+Date: Tue, 15 Nov 2022 18:16:19 GMT
 Server: Apache/2.4.41 (Ubuntu)
 Vary: Accept-Encoding
 Content-Length: 4380
@@ -129,3 +125,13 @@ Content-Type: text/html; charset=UTF-8
 </body>
 </html>
 
+index.php
+members.php
+LAB/
+gallery.php
+contact.php
+http://web.cs.nthu.edu.tw/files/14-1015-143485,r109-1.php?Lang=zh-tw
+http://www.nthu.edu.tw
+http://web.cs.nthu.edu.tw/bin/home.php
+http://www.com.nthu.edu.tw/
+http://www.highimpact-seo.co.uk/
