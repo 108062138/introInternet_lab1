@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -16,13 +17,14 @@ int main(int argc, char* argv[]) {
     const char* splitBy = "/";
     hostName = strtok(url, splitBy);
     left = strtok(NULL, splitBy);
+    if(left==NULL) left = "";
 
-    char *host = "can.cs.nthu.edu.tw"; // 目標 URI
+    char *host = hostName; // 目標 URI
     char *PORT_NUM = "80"; // HTTP port
 
     char request[0xfffff], response[0xfffff]; // 請求 與 回應訊息
-    char *requestLine = "GET /index.php HTTP/1.1\r\n"; // 請求行
-    char *headerFmt = "Host: %s\r\n"; // Host 表頭欄位
+    char *requestLine = "GET "; // 請求行
+    char *headerFmt = "/%s HTTP/1.1\r\nHost: %s\r\n"; // Host 表頭欄位
     char *CRLF = "\r\n";  // 表頭後的 CRLF
 
     int cfd; // Socket 檔案描述符 (File Descriptor)
@@ -31,21 +33,20 @@ int main(int argc, char* argv[]) {
     struct addrinfo *result; // getaddrinfo() 執行結果的 addrinfo 結構指標
 
     // 動態配置記憶體，以決定 表頭緩衝區 (Header Buffer) 長度
-    size_t bufferLen = strlen(headerFmt) + strlen(host) + 1;
+    size_t bufferLen = strlen(headerFmt) + strlen(host) + 10;
     char *buffer = (char *) malloc(bufferLen);
-    size_t rl = strlen(requestLine) + 1;
-    char *tmpb = (char *) malloc(rl);
-    snprintf(tmpb, rl, requestLine, left);
 
     //組裝請求訊息
     strcpy(request, requestLine);
-    snprintf(buffer, bufferLen, headerFmt, host);
+    snprintf(buffer, bufferLen, headerFmt, left, host);
     strcat(request, buffer);
     strcat(request, CRLF);
 
     // 釋放緩衝區記憶體
     free(buffer);
     buffer = NULL;
+
+    printf("wtf request \n%s\n", request);
 
     // 以 memset 清空 hints 結構
     memset(&hints, 0, sizeof(struct addrinfo));
@@ -134,7 +135,5 @@ Request:
 ----------
 GET /index.php HTTP/1.1
 Host: can.cs.nthu.edu.tw
-
-
 ----------
 */
