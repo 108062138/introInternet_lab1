@@ -91,6 +91,7 @@ int main(int argc, char* argv[]) {
     char* target = "<a href=\"";
     int targetLen = 9;
     int cnt = 0;
+    int linkNum = 0;
     int state = REDUNDENT;
     printf("======== Hyperlinks ========\n");
     for(int i=0;i<strlen(response);i++){
@@ -117,10 +118,12 @@ int main(int argc, char* argv[]) {
             }else {
                 printf("\n");
                 state = REDUNDENT;
+                linkNum++;
                 cnt=0;
             }
         }
     }
+    printf("# of link: %d\n", linkNum);
     return 0;
 }
 
